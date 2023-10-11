@@ -24,8 +24,3 @@ COPY --from=build /root/.ollama/ /root/.ollama/
 # See here how to solve CTRL+C should not kill 'ollama serve':
 # https://superuser.com/questions/708919/ctrlc-in-a-sub-process-is-killing-a-nohuped-process-earlier-in-the-script
 ENTRYPOINT ( setsid ollama serve >/dev/null 2>&1 & ) && sleep 2 && ollama run mistral-7b-openorca
-
-# docker build -t ollama-mistral-7b-openorca .
-# docker run -it --rm ollama-mistral-7b-openorca
-# docker save -o ollama-mistralorca-docker.tar ollama-mistral-7b-openorca
-# docker load -i ollama-mistralorca-docker.tar
