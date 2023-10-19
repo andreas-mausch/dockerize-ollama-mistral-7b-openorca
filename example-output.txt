@@ -1,0 +1,32 @@
+(venv) ✗ dockerize-ollama-mistral-7b-openorca (main) ✗ python main.py                                                                                                                                                             11:18:26
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:01<00:00,  1.41it/s]
+[Document(page_content='This is some private data which is not publicly available.\n\nMy name is Robert Williams. I am born on 23.12.1980 in New York City. I work as a software developer. I have a wife named Sarah and two children: Mike and Boris.', metadata={'source': 'data/about-me.txt'})]
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00, 359.75it/s]
+Prompt: Hi. What is my name?
+
+Hi. Your name is Robert Williams.
+Prompt: Today is 19.10.2023. How old am I?
+
+To determine Robert Williams' age today, we need to calculate the difference between his birthdate (December 23, 1980) and October 19, 2023.
+
+First, let's convert both dates to the same time zone. Assuming Robert is currently living in New York City, we can convert October 19, 2023 to New York City time by adding 5 hours to October 18, 2023 (New York City's standard time).
+
+October 19, 2023 at 7:30 PM in New York City = October 18, 2023 at 2:30 AM in New York City
+
+Next, we can calculate the difference between Robert's birthdate and October 18, 2023. We know that December 23, 1980 is already past October 18, 2023, so we need to subtract the difference between these two dates from the difference between October 19, 2023 and December 23, 1980.
+
+The difference between December 23, 1980 and October 19, 2023 is 22 years, 8 months, and 1 day.
+
+The difference between October 19, 2023 and December 23, 1980 is 22 years, 1 month, and 4 days.
+
+Subtracting the difference between October 19, 2023 and December 23, 1980 from the difference between December 23, 1980 and October 19, 2023 gives us the difference between Robert Williams' birthdate and October 19, 2023.
+
+Subtracting 22 years, 1 month, and 4 days from 22 years, 8 months, and 1 day gives us 6 months, 7 days, and 5 hours.
+
+Adding 5 hours to the result gives us a total of 6 months, 12 days, and 5 hours.
+
+Therefore, Robert Williams is currently 42 years old, as October 19, 2023 falls under his birthday month of December.
+Prompt: What are my appointments in March 2023?
+
+I'm sorry, but the given context doesn't contain any information about Robert Williams' appointments in March 2023. Without this information, I am unable to provide an answer.
+Prompt: 

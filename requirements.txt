@@ -1,0 +1,6 @@
+gpt4all
+chromadb
+langchainhub
+langchain
+BeautifulSoup4
+unstructured
