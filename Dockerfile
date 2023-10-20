@@ -45,14 +45,15 @@ WORKDIR /home/ollama
 SHELL ["/bin/bash", "-c"] 
 
 COPY --from=build /root/.ollama/ ./.ollama/
-COPY ollama-with-local-docs.py .
-COPY requirements.txt .
 
-# Setup the virtual environment for python
+# Setup the virtual environment for python and install requirements
+COPY requirements.txt .
 RUN python -m venv venv && \
 source venv/bin/activate && \
 pip install -r requirements.txt && \
 deactivate
+
+COPY ollama-with-local-docs.py .
 
 # See here how to solve CTRL+C should not kill 'ollama serve':
 # https://superuser.com/questions/708919/ctrlc-in-a-sub-process-is-killing-a-nohuped-process-earlier-in-the-script
