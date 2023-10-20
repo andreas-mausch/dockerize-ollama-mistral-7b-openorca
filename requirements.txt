@@ -1,6 +1,7 @@
+BeautifulSoup4
 gpt4all
 chromadb
-langchainhub
 langchain
-BeautifulSoup4
+langchainhub
+nltk
 unstructured

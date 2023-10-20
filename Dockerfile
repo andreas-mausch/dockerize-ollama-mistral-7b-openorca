@@ -51,6 +51,7 @@ COPY requirements.txt .
 RUN python -m venv venv && \
 source venv/bin/activate && \
 pip install -r requirements.txt && \
+python -m nltk.downloader all && \
 deactivate
 
 COPY ollama-with-local-docs.py .
