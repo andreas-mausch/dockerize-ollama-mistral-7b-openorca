@@ -10,14 +10,14 @@ from langchain.chains import ConversationalRetrievalChain, RetrievalQA
 from langchain.indexes.vectorstore import VectorStoreIndexWrapper
 from langchain.indexes import VectorstoreIndexCreator
 
-llm = Ollama(model="mistral")
+llm = Ollama(model="mistral-7b-openorca")
 
 loader = DirectoryLoader("data/", show_progress=True, use_multithreading=True)
 print(loader.load())
 
 index = VectorstoreIndexCreator(
     vectorstore_cls=Chroma,
-    embedding=OllamaEmbeddings(model="mistral"),
+    embedding=OllamaEmbeddings(model="mistral-7b-openorca"),
     text_splitter=CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 ).from_loaders([loader])
 
