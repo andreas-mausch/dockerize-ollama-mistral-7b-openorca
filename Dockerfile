@@ -42,7 +42,7 @@ rm -rf /var/lib/apt/lists/*
 RUN useradd -ms /bin/bash ollama
 USER ollama
 WORKDIR /home/ollama
-SHELL ["/bin/bash", "-c"] 
+SHELL ["/bin/bash", "-c"]
 
 COPY --from=build /root/.ollama/ ./.ollama/
 
@@ -54,8 +54,7 @@ pip install -r requirements.txt && \
 python -m nltk.downloader all && \
 deactivate
 
+COPY start-server.sh .
 COPY ollama-with-local-docs.py .
 
-# See here how to solve CTRL+C should not kill 'ollama serve':
-# https://superuser.com/questions/708919/ctrlc-in-a-sub-process-is-killing-a-nohuped-process-earlier-in-the-script
-ENTRYPOINT ( setsid ollama serve >/dev/null 2>&1 & ) && sleep 2 && ollama run mistral-7b-openorca
+ENTRYPOINT ./start-server.sh && ollama run mistral-7b-openorca
