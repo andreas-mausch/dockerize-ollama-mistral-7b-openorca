@@ -57,4 +57,4 @@ deactivate
 COPY start-server.sh .
 COPY ollama-with-local-docs.py .
 
-ENTRYPOINT ./start-server.sh && ollama run mistral-7b-openorca
+ENTRYPOINT source venv/bin/activate && ./start-server.sh && ollama run mistral-7b-openorca

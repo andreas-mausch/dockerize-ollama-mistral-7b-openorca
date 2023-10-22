@@ -26,16 +26,8 @@ You can provide additional files with private information which will also be use
 The same can be achieved with ollama and langchain. See the commands below.
 The extra data is inside the folder `data/`. You can add your own documents.
 
-## Python setup
-
 ```bash
-python -m venv venv
-# Use venv/bin/activate.fish in the fish shell instead:
-source venv/bin/activate
-pip install -r requirements.txt
-python ollama-with-local-docs.py
-# And after your session, to disable the virtual environment:
-deactivate
+docker run -it --rm -v $PWD/data:/home/ollama/data:ro --entrypoint bash ollama-mistral-7b-openorca -c 'source venv/bin/activate && ./start-server.sh && python ollama-with-local-docs.py'
 ```
 
 # Instruction template
