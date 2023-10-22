@@ -13,10 +13,12 @@ Please use it instead of this repo if you don't need it dockerized.
 
 ```bash
 docker build -t ollama-mistral-7b-openorca .
-docker run -it --rm ollama-mistral-7b-openorca
+docker run -it --rm --network none ollama-mistral-7b-openorca
 docker save -o ollama-mistralorca-docker.tar ollama-mistral-7b-openorca
 # docker load -i ollama-mistralorca-docker.tar
 ```
+
+Note: I use docker's [none network driver](https://docs.docker.com/network/drivers/none/) to ensure everythings runs locally and no private data is exposed to the internet.
 
 # Run with local docs
 
@@ -27,7 +29,7 @@ The same can be achieved with ollama and langchain. See the commands below.
 The extra data is inside the folder `data/`. You can add your own documents.
 
 ```bash
-docker run -it --rm -v $PWD/data:/home/ollama/data:ro --entrypoint bash ollama-mistral-7b-openorca -c 'source venv/bin/activate && ./start-server.sh && python ollama-with-local-docs.py'
+docker run -it --rm --network none -v $PWD/data:/home/ollama/data:ro --entrypoint bash ollama-mistral-7b-openorca -c 'source venv/bin/activate && ./start-server.sh && python ollama-with-local-docs.py'
 ```
 
 # Instruction template
