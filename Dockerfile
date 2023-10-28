@@ -50,7 +50,7 @@ COPY --from=build /root/.ollama/ ./.ollama/
 COPY requirements.txt .
 RUN python -m venv venv && \
 source venv/bin/activate && \
-pip install -r requirements.txt && \
+pip install --no-cache-dir -r requirements.txt && \
 python -m nltk.downloader all && \
 deactivate
 
