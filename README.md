@@ -1,3 +1,5 @@
+# AI: text-generation
+
 A ready-to-run ollama dockerized together with the [Mistral-7B-OpenOrca-GGUF](https://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF) language model.
 
 The reason for this project is to have a ready-to-use docker image which I can store on my drive and spin it up whenever I want to,
@@ -8,6 +10,8 @@ This image also uses [langchain](https://www.langchain.com/) to use local docume
 Update: ollama has added the `mistral-openorca` model as a default option [here](https://ollama.ai/library/mistral-openorca),
 which most likely has the better template defined.
 Please use it instead of this repo if you don't need it dockerized.
+
+See also [my AI list on github.com](https://github.com/stars/andreas-mausch/lists/ai).
 
 # Build, run and save the image
 
