@@ -26,10 +26,14 @@ chain = ConversationalRetrievalChain.from_llm(
 )
 
 chat_history = []
-while True:
-    query = input("Prompt: ")
-    result = chain.invoke({"question": query, "chat_history": chat_history})
-    print(result['answer'])
+try:
+    while True:
+        query = input(">>> ")
+        result = chain.invoke({"question": query, "chat_history": chat_history})
+        for chunk in chat.stream("Write me a song about goldfish on the moon"):
+            print(chunk.content, end="", flush=True)
+            print(result['answer'])
 
-    chat_history.append((query, result['answer']))
-    query = None
+        chat_history.append((query, result['answer']))
+except EOFError:
+    pass
