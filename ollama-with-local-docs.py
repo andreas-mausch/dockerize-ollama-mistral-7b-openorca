@@ -1,19 +1,18 @@
 import sys
-from langchain.embeddings import OllamaEmbeddings
-from langchain.vectorstores import Chroma
 from langchain.text_splitter import CharacterTextSplitter, RecursiveCharacterTextSplitter
-from langchain.document_loaders import DirectoryLoader, TextLoader, WebBaseLoader
-from langchain.llms import Ollama
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.chains import ConversationalRetrievalChain, RetrievalQA
 from langchain.indexes.vectorstore import VectorStoreIndexWrapper
 from langchain.indexes import VectorstoreIndexCreator
+from langchain_community.embeddings import OllamaEmbeddings
+from langchain_community.vectorstores import Chroma
+from langchain_community.document_loaders import DirectoryLoader, TextLoader, WebBaseLoader
+from langchain_community.llms import Ollama
 
 llm = Ollama(model="mistral-7b-openorca")
 
 loader = DirectoryLoader("data/", show_progress=True, use_multithreading=True)
-print(loader.load())
 
 index = VectorstoreIndexCreator(
     vectorstore_cls=Chroma,
@@ -29,7 +28,7 @@ chain = ConversationalRetrievalChain.from_llm(
 chat_history = []
 while True:
     query = input("Prompt: ")
-    result = chain({"question": query, "chat_history": chat_history})
+    result = chain.invoke({"question": query, "chat_history": chat_history})
     print(result['answer'])
 
     chat_history.append((query, result['answer']))
