@@ -1,0 +1,21 @@
+# https://github.com/jmorganca/ollama/blob/v0.1.20/docs/modelfile.md
+
+FROM ./mistral-7b-openorca.Q5_K_M.gguf
+
+PARAMETER temperature 1
+PARAMETER stop "<|im_start|>"
+PARAMETER stop "<|im_end|>"
+
+# This is https://github.com/openai/openai-python/blob/release-v0.28.0/chatml.md
+TEMPLATE """
+{{- if .System }}
+<|im_start|>system {{ .System }}<|im_end|>
+{{- end }}
+<|im_start|>user
+{{ .Prompt }}<|im_end|>
+<|im_start|>assistant
+"""
+
+SYSTEM """
+You are a helpful assistant.
+"""
