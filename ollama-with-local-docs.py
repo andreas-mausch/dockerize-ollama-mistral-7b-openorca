@@ -10,7 +10,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_community.document_loaders import DirectoryLoader, TextLoader, WebBaseLoader
 from langchain_community.llms import Ollama
 
-llm = Ollama(model="mistral-7b-openorca")
+llm = Ollama(model="mistral-7b-openorca", callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]))
 
 loader = DirectoryLoader("data/", show_progress=True, use_multithreading=True)
 
@@ -22,7 +22,7 @@ index = VectorstoreIndexCreator(
 
 chain = ConversationalRetrievalChain.from_llm(
     llm=llm,
-    retriever=index.vectorstore.as_retriever(search_kwargs={"k": 1}),
+    retriever=index.vectorstore.as_retriever(search_kwargs={"k": 1})
 )
 
 chat_history = []
@@ -30,10 +30,9 @@ try:
     while True:
         query = input(">>> ")
         result = chain.invoke({"question": query, "chat_history": chat_history})
-        for chunk in chat.stream("Write me a song about goldfish on the moon"):
-            print(chunk.content, end="", flush=True)
-            print(result['answer'])
-
         chat_history.append((query, result['answer']))
+
+        print()
+        print()
 except EOFError:
     pass
